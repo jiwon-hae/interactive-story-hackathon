@@ -1,0 +1,219 @@
+html, body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+:root {
+  --background-color: #f0f2f5;
+  --panel-background: #ffffff;
+  --text-color: #1c1e21;
+  --subtle-text-color: #606770;
+  --border-color: #dddfe2;
+  --primary-color: #1877f2;
+  --primary-hover-color: #166fe5;
+  --danger-color: #fa383e;
+  --danger-hover-color: #e33136;
+  --font-family: 'Inter', sans-serif;
+  --border-radius: 8px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.storyboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.panel {
+  background-color: var(--panel-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.panel:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.panel-content {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.panel textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  resize: vertical;
+  min-height: 80px;
+  font-family: var(--font-family);
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.panel-image-placeholder,
+.panel-image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background-color: #e9ecef;
+}
+
+.panel-image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--subtle-text-color);
+}
+
+.panel-narrative {
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-top: 1px solid var(--border-color);
+  font-style: italic;
+  color: var(--subtle-text-color);
+  font-size: 0.9rem;
+}
+
+.panel-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.btn {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: var(--font-family);
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.btn-primary:disabled {
+  background-color: #a7caff;
+  cursor: not-allowed;
+}
+
+.btn-danger {
+  background: none;
+  border: none;
+  color: var(--danger-color);
+  font-size: 1.2rem;
+  padding: 0.5rem;
+  line-height: 1;
+}
+
+.btn-danger:hover {
+  color: var(--danger-hover-color);
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: var(--primary-color);
+  animation: spin 1s ease infinite;
+  margin-bottom: 1rem;
+}
+
+.loading-text {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.add-panel-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--panel-background);
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  color: var(--primary-color);
+  cursor: pointer;
+  min-height: 300px;
+  transition: background-color 0.2s, border-color 0.2s;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.add-panel-button:hover {
+  background-color: #f7faff;
+  border-color: var(--primary-color);
+}
+
+.error-message {
+  color: var(--danger-color);
+  background-color: #ffebee;
+  border: 1px solid var(--danger-color);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  margin-top: 1rem;
+}
